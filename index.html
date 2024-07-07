@@ -15,11 +15,13 @@
             <input type="text" id="qrText" placeholder="Enter text to generate QR code">
             <button id="generateBtn">Generate</button>
             <div id="qrCode"></div>
+            <button id="downloadBtn" style="display: none;">Download QR Code</button>
         </div>
 
         <div class="reader">
             <h2>Read QR Code</h2>
-            <button id="startReaderBtn">Start Reader</button>
+            <button id="startReaderBtn">Use Camera</button>
+            <input type="file" id="fileInput" accept="image/*">
             <div id="reader"></div>
             <p id="result"></p>
         </div>
