@@ -6,7 +6,6 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
 }
-
 .container {
     text-align: center;
     background: white;
@@ -14,24 +13,19 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 h1 {
     color: #333;
 }
-
 .generator, .reader {
     margin: 20px 0;
 }
-
 #qrCode {
     margin: 20px auto;
 }
-
 #reader {
     width: 300px;
     margin: 20px auto;
 }
-
 button {
     background-color: #007BFF;
     color: white;
@@ -40,11 +34,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-
 button:hover {
     background-color: #0056b3;
 }
-
 input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -52,7 +44,6 @@ input {
     width: 80%;
     margin-bottom: 10px;
 }
-
 #fileInput {
     display: block;
     margin: 20px auto;
