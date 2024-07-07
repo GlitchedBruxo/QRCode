@@ -52,3 +52,8 @@ input {
     width: 80%;
     margin-bottom: 10px;
 }
+
+#fileInput {
+    display: block;
+    margin: 20px auto;
+}
