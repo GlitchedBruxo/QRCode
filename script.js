@@ -67,6 +67,12 @@ document.getElementById("fileInput").addEventListener("change", (event) => {
     }
 });
 
+// Show file input when "Upload File" button is clicked
+document.getElementById("showUploadBtn").addEventListener("click", () => {
+    document.getElementById("fileInput").style.display = "block";
+    document.getElementById("uploadBtn").style.display = "none";
+});
+
 // QR Code Reader with File Upload
 document.getElementById("uploadBtn").addEventListener("click", () => {
     const fileInput = document.getElementById("fileInput");
