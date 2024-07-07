@@ -1,30 +1,37 @@
-import QRCode from 'qrcode';
-
 // QR Code Generator
+const qrCode = new QRCodeStyling({
+    width: 300,
+    height: 300,
+    type: "png",
+    data: "",
+    image: "",
+    dotsOptions: {
+        color: "#4267b2",
+        type: "rounded"
+    },
+    backgroundOptions: {
+        color: "#ffffff",
+    },
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 20
+    }
+});
+
 document.getElementById("generateBtn").addEventListener("click", () => {
     const qrText = document.getElementById("qrText").value;
-    const qrCodeContainer = document.getElementById("qrCode");
-    qrCodeContainer.innerHTML = "";
-
-    QRCode.toCanvas(qrText, { errorCorrectionLevel: 'H' }, (error, canvas) => {
-        if (error) {
-            console.error(error);
-            return;
-        }
-        qrCodeContainer.appendChild(canvas);
-        document.getElementById("downloadBtn").style.display = "block";
+    qrCode.update({
+        data: qrText
     });
+    qrCode.append(document.getElementById("qrCode"));
+    document.getElementById("downloadBtn").style.display = "block";
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
-    const canvas = document.querySelector("#qrCode canvas");
-    const url = canvas.toDataURL("image/png");
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "qr-code.png";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    qrCode.download({
+        name: "qr-code",
+        extension: "png"
+    });
 });
 
 // QR Code Reader with Camera
@@ -34,7 +41,7 @@ document.getElementById("startReaderBtn").addEventListener("click", () => {
     const html5QrCode = new Html5Qrcode("reader");
 
     html5QrCode.start(
-        { facingMode: "environment" },
+        { facingMode: "environment" }, 
         {
             fps: 10,
             qrbox: 250
@@ -66,7 +73,7 @@ document.getElementById("uploadBtn").addEventListener("click", () => {
     const file = fileInput.files[0];
     if (file) {
         const html5QrCode = new Html5Qrcode("reader");
-        html5QrCode.scanFile(file, true)
+        html5QrCode.scanFile(file, false)
             .then(decodedText => {
                 document.getElementById("result").innerText = `QR Code Result: ${decodedText}`;
             })
