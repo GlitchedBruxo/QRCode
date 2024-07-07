@@ -36,8 +36,7 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
 // QR Code Reader with Camera
 document.getElementById("startReaderBtn").addEventListener("click", () => {
-    document.getElementById("fileInput").style.display = "none";
-    document.getElementById("uploadBtn").style.display = "none";
+    document.getElementById("uploadContainer").style.display = "none";
     const html5QrCode = new Html5Qrcode("reader");
 
     html5QrCode.start(
@@ -58,6 +57,11 @@ document.getElementById("startReaderBtn").addEventListener("click", () => {
     });
 });
 
+// Show file input and upload button when "Upload File" button is clicked
+document.getElementById("showUploadBtn").addEventListener("click", () => {
+    document.getElementById("uploadContainer").style.display = "block";
+});
+
 // Show upload button when file is selected
 document.getElementById("fileInput").addEventListener("change", (event) => {
     if (event.target.files.length > 0) {
@@ -65,12 +69,6 @@ document.getElementById("fileInput").addEventListener("change", (event) => {
     } else {
         document.getElementById("uploadBtn").style.display = "none";
     }
-});
-
-// Show file input when "Upload File" button is clicked
-document.getElementById("showUploadBtn").addEventListener("click", () => {
-    document.getElementById("fileInput").style.display = "block";
-    document.getElementById("uploadBtn").style.display = "none";
 });
 
 // QR Code Reader with File Upload
