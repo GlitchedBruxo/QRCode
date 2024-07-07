@@ -2,7 +2,7 @@
 const qrCode = new QRCodeStyling({
     width: 300,
     height: 300,
-    type: "png", // Set type to 'png' for PNG output
+    type: "png",
     data: "",
     image: "",
     dotsOptions: {
@@ -37,7 +37,7 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 // QR Code Reader with Camera
 document.getElementById("startReaderBtn").addEventListener("click", () => {
     const html5QrCode = new Html5Qrcode("reader");
-    
+
     html5QrCode.start(
         { facingMode: "environment" }, 
         {
@@ -60,17 +60,13 @@ document.getElementById("startReaderBtn").addEventListener("click", () => {
 document.getElementById("fileInput").addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            const html5QrCode = new Html5Qrcode("reader");
-            html5QrCode.scanFile(reader.result, true)
-                .then(decodedText => {
-                    document.getElementById("result").innerText = `QR Code Result: ${decodedText}`;
-                })
-                .catch(err => {
-                    document.getElementById("result").innerText = `Error: ${err}`;
-                });
-        };
-        reader.readAsDataURL(file);
+        const html5QrCode = new Html5Qrcode("reader");
+        html5QrCode.scanFile(file, false)
+            .then(decodedText => {
+                document.getElementById("result").innerText = `QR Code Result: ${decodedText}`;
+            })
+            .catch(err => {
+                document.getElementById("result").innerText = `Error: ${err}`;
+            });
     }
 });
