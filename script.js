@@ -36,7 +36,8 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
 // QR Code Reader with Camera
 document.getElementById("startReaderBtn").addEventListener("click", () => {
-    document.getElementById("uploadContainer").style.display = "none";
+    document.getElementById("fileInput").style.display = "none";
+    document.getElementById("uploadBtn").style.display = "none";
     const html5QrCode = new Html5Qrcode("reader");
 
     html5QrCode.start(
@@ -55,11 +56,6 @@ document.getElementById("startReaderBtn").addEventListener("click", () => {
     ).catch(err => {
         console.error(`Unable to start scanning, error: ${err}`);
     });
-});
-
-// Show file input and upload button when "Upload File" button is clicked
-document.getElementById("showUploadBtn").addEventListener("click", () => {
-    document.getElementById("uploadContainer").style.display = "block";
 });
 
 // Show upload button when file is selected
